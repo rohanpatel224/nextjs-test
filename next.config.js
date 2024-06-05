@@ -1,7 +1,16 @@
 /** @type {import('next').NextConfig} */
+
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+	enabled: process.env.ANALYZE === 'true',
+});
+
 const nextConfig = {
-    basePath: '',
-    output: 'standalone'
+	env: {
+		NEXT_PUBLIC_REACT_APP_ENV: 'production'
+	},
+		basePath: '',
+		output: 'standalone',
+	
 };
 
-export default nextConfig;
+module.exports = withBundleAnalyzer(nextConfig);
